@@ -25,12 +25,17 @@ import static org.springframework.http.HttpStatus.NO_CONTENT;
 
 @RestController
 @RequestMapping("schedules")
-@AllArgsConstructor
 public class ScheduleController {
 
     private final IScheduleService service;
     private final IScheduleQueryService queryService;
     private final IScheduleMapper mapper;
+
+    public ScheduleController(IScheduleService service, IScheduleQueryService queryService, IScheduleMapper mapper) {
+        this.service = service;
+        this.queryService = queryService;
+        this.mapper = mapper;
+    }
 
     @PostMapping
     @ResponseStatus(CREATED)

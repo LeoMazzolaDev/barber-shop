@@ -28,12 +28,17 @@ import static org.springframework.http.HttpStatus.NO_CONTENT;
 
 @RestController
 @RequestMapping("clients")
-@AllArgsConstructor
 public class ClientController {
 
     private final IClientService service;
     private final IClientQueryService queryService;
     private final IClientMapper mapper;
+
+    public ClientController(IClientService service, IClientQueryService queryService, IClientMapper mapper) {
+        this.service = service;
+        this.queryService = queryService;
+        this.mapper = mapper;
+    }
 
     @PostMapping
     @ResponseStatus(CREATED)
